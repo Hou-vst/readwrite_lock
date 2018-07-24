@@ -1,6 +1,7 @@
 #pragma once
-#include<mutex>
-#include<condition_variable>
+
+
+using namespace std;
 
 class IReadAndWrite_Lock
 {
@@ -11,11 +12,3 @@ public:
 	virtual int writeUnlock() = 0;
 };
 
-class readwrite_lock :public IReadAndWrite_Lock
-{
-public:
-private:
-	mutex mtx;
-	condition_variable cond;
-	int state;//0:无锁；>0:加读锁的个数；<0:写锁
-};
